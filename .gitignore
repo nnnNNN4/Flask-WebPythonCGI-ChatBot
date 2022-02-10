@@ -1,5 +1,19 @@
 .DS_Store
 mysql/mysql_data/auto.cnf
+mysql/mysql_data/ca-key.pem
+mysql/mysql_data/client-key.pem
+mysql/mysql_data/ib_buffer_pool
+mysql/mysql_data/ib_buffer_pool
+mysql/mysql_data/ib_logfile0
+mysql/mysql_data/ib_logfile1
+mysql/mysql_data/ca.pm
+mysql/mysql_data/client-cert.pem
+mysql/mysql_data/indata1
+mysql/mysql_data/private_key.pem
+mysql/mysql_data/public_key.pem
+mysql/mysql_data/server-cert.pem
+mysql/mysql_data/server-key.pem
+mysql/mysql_data/ibdata1
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
