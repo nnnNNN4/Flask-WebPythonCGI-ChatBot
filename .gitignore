@@ -1,4 +1,5 @@
 .DS_Store
+mysql/mysql_data/auto.cnf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
