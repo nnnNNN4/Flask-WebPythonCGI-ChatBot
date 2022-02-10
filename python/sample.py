@@ -1,4 +1,4 @@
-##動作確認用プログラム
+##動作確認用プログラムコード
 import math
 import sys
 
