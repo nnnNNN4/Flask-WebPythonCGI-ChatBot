@@ -1,12 +1,15 @@
 ##データベース
 FROM mysql:5.7
 RUN touch /var/log/mysql/mysqld.log
+RUN touch /run/mysqld/mysqld.sock
+RUN touch /var/log/mysql/mysqld.log
+RUN apt-get install default-mysql-client
 
-ADD  ./mysql/my.cnf /etc/mysql/conf.d/my.cnf
+COPY ./mysql/conf.d/my.cnf /etc/mysql/conf.d/
 RUN chmod 644 /etc/mysql/my.cnf
 CMD ["mysqld"]
 
-##Python本体
+##アプリケーション本体
 FROM python:3.6
 
 ARG project_dir= /src

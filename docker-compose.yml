@@ -1,32 +1,27 @@
-version: '3'
+version: '3.3'
 services:
+  python3:
+    ports:
+      - 8000:80
+    build: ./src/
+    links:
+      - db
+    stdin_open: true
   db:
-    image: mysql:5.7
-    container_name: python-db
-    build: ./mysql/
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    restart: always
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql
       - ./mysql/sqls:/docker-entrypoint-initdb.d
-      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./log/mysql:/var/log/mysql
     environment:
-      #userパスワード
-      - MYSQL_DATABASE=test_database
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=docker
-      - TZ=Asia/Tokyo
-      #rootパスワード
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_RANDOM_ROOT_PASSWORD=no
-    stdin_open: true
-      
-  #python
-  python3:
-    container_name: python3
-    build:
-      context: ./python/
-    links:
-      - db
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: password
+      eTZ: Asia/Tokyo
     stdin_open: true
 
   
