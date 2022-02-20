@@ -8,7 +8,12 @@ app = Flask(__name__)
 def index():
     return 'index'
 
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('main.html', name=name)
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if request.method == 'POST':
+        if request.form['username'] and request.form['password']:
+            return render_template('in.html',
+            	username=request.form['username'],
+            	password=request.form['password'])
+        return 'パスワードかユーザーネームが入力されていません'
+    return render_template('login.html')
