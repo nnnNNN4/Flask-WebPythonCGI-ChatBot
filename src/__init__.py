@@ -2,11 +2,9 @@ import os
 
 from flask import Flask
 
-#アプリケーションファクトリの機能を果たす関数「create_app」
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        #本番環境ではシークレットキーはランダムな文字列に変更
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
@@ -21,8 +19,26 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    @app.route('/')
+    def index():
+        return 'Index Page'
+
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    from markupsafe import escape
+
+    @app.route('/user/<username>')
+    def show_user_profile(username):
+        return 'User %s' % escape(username)
+
+    @app.route('/post/<int:post_id>')
+    def show_post(post_id):
+        return 'Post %d' % post_id
+
+    @app.route('/path/<path:subpath>')
+    def show_subpath(subpath):
+        return 'Subpath %s' % escape(subpath)
 
     return app
