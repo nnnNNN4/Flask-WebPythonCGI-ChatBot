@@ -24,6 +24,6 @@ def upload_file():
     if request.method == 'POST':
         f = request.files["the_file"]
         f.save('/home/testuser/Flask-Project-1/src/uploads/' + secure_filename(f.filename))
-        return render_template('finished.html')
+        return render_template('uploads/finished.html')
     else:
-    	return render_template('uploads.html')
+    	return render_template('uploads/uploads.html')
