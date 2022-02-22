@@ -1,8 +1,8 @@
-<html>
-  <body>
-    <h1>アップロード完了</h1>
-    <section id="about">
-      <button type="button" onclick="history.back()">アップロード画面に戻ります</button>
-    </section>
-  </body>
-</html>
+{% extends 'base.html' %}
+ 
+{% block title %}アップロード完了{% endblock %}
+
+{% block content %}
+  <p>アップロードが完了しました！</p>
+    <button type="button" onclick="history.back()">戻る</button>
+{% endblock %}
