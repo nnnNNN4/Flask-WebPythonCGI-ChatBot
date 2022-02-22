@@ -13,11 +13,11 @@ def index():
 def login():
     if request.method == 'POST':
         if request.form['username'] and request.form['password']:
-            return render_template('in.html',
+            return render_template('login/in.html',
             	username=request.form['username'],
             	password=request.form['password'])
         return 'パスワードかユーザーネームが入力されていません'
-    return render_template('login.html')
+    return render_template('login/login.html')
 
 @app.route('/uploads', methods=['POST', 'GET'])
 def upload_file():
