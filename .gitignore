@@ -131,3 +131,4 @@ mysql/mysql_data/mysql_upgrade_info
 .gitignore
 mysql/mysql_data/undo_001
 mysql/mysql_data/undo_002
+mysql/mysql_data/binlog.000002
