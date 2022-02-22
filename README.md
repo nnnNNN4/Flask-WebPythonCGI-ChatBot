@@ -8,7 +8,7 @@ Python 3.8.2/Flask 2.0.2/Werkzeug 2.0.3/Mysql/CGI/OpenCV
 pythonについての理解、pythonを使用したアプリケーション作成
 
 <h1>実装機能</h1>
-・画像アップロード機能
-・ログイン機能
-・画像処理機能
+・画像アップロード機能<br>
+・ログイン機能<br>
+・画像処理機能<br>
 ・etc
