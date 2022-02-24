@@ -1,13 +1,15 @@
 from flask import Flask, url_for
 from markupsafe import escape
-from flask import request
+from flask import request, after_this_request
 from flask import render_template
 from werkzeug.utils import secure_filename
+from flask import make_response
+from flask import abort, redirect
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'index'
+    return render_template('main/index.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
