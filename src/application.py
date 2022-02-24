@@ -5,7 +5,10 @@ from flask import render_template
 from werkzeug.utils import secure_filename
 from flask import make_response
 from flask import abort, redirect
+from flask_bootstrap import Bootstrap
+
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
