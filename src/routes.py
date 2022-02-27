@@ -1,10 +1,12 @@
 from flask import Flask
-from markupsafe import escape
+
 from flask import request, after_this_request
 from flask import render_template
-from werkzeug.utils import secure_filename
 from flask import make_response
 from flask import abort, redirect
+
+from werkzeug.utils import secure_filename
+from markupsafe import escape
 
 def routes_setting(app: Flask):
     @app.route('/')
