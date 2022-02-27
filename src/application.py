@@ -8,11 +8,22 @@ from flask import abort, redirect
 
 from markupsafe import escape
 from werkzeug.utils import secure_filename
+from mydb import init_db
 
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('mydb.config.Config')
+
+    init_db(app)
+
+    return app
+
+app = create_app()
 
 # route setting
 from src.routes import routes_setting
