@@ -2,6 +2,8 @@ import os
 from flask import Flask, url_for
 from markupsafe import escape
 
+app = Flask(__name__)
+
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -18,25 +20,3 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    app = Flask(__name__)
-
-    @app.route('/')
-    def index():
-        return 'index'
-
-    @app.route('/login')
-    def login():
-        return 'login'
-
-    @app.route('/user/<username>')
-    def profile(username):
-        return '{}\'s profile'.format(escape(username))
-
-    with app.test_request_context():
-        print(url_for('index'))
-        print(url_for('login'))
-        print(url_for('login', next='/'))
-        print(url_for('profile', username='hogehoge'))
-
-    return app
