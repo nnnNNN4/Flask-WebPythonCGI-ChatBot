@@ -5,3 +5,5 @@ CREATE TABLE users (
   updated_at datetime not null default current_timestamp on update current_timestamp,
   primary key (id)
 );
+
+use users;

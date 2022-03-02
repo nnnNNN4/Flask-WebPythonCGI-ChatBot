@@ -13,7 +13,7 @@ class DevelopmentConfig:
         'host': os.getenv('DB_HOST', 'mysql'),
         'database': os.getenv('DB_DATABASE', 'user'),
     }
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{user}:{password}@{host}/{database}?charset=utf8'.format(
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{user}:{password}@{host}/mydb?charset=utf8'.format(
         **dbCOnfig)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False

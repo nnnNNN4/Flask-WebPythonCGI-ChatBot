@@ -1,13 +1,20 @@
 version: '3.3'
 services:
   python3:
+    build:
+      context: ./src
     ports:
       - 8000:80
-    build: ./src/
+    volumes:
+      - ./src:/src
+    environment:
+      - FLASK_APP=src.run:app
+      - FLASK_ENV=development
+    command: flask run -h 0.0.0.0
     links:
-      - db
-    stdin_open: true
-  db:
+      - mysql
+
+  mysql:
     image: mysql:8.0
     ports:
       - 3306:3306
@@ -22,6 +29,5 @@ services:
       MYSQL_PASSWORD: pass
       MYSQL_ROOT_PASSWORD: password
       eTZ: Asia/Tokyo
-    stdin_open: true
 
   

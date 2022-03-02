@@ -5,16 +5,20 @@ RUN touch /run/mysqld/mysqld.sock
 RUN touch /var/log/mysql/mysqld.log
 RUN apt-get install default-mysql-client
 
-COPY ./mysql/conf.d/my.cnf /etc/mysql/conf.d/
+COPY ./mysql/conf.d/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/my.cnf
 CMD ["mysqld"]
 
-##アプリケーション本体
-FROM python:3.6
+##アプリケーション
+FROM python:3.8
 
 ARG project_dir= /src
 
+ADD ./requirements.txt $project_dir
+
 WORKDIR $project_dir
+
+RUN pip install -r requirements.txt
 
 RUN apt-get update
 RUN apt-get -y install locales && \
@@ -28,5 +32,3 @@ ENV TERM xterm
 RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
-
-RUN python -m pip install jupyterlab
