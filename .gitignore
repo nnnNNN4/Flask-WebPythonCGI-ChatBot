@@ -128,7 +128,6 @@ mysql/mysql_data/binlog.index
 mysql/mysql_data/ibtmp1
 mysql/mysql_data/mysql.ibd
 mysql/mysql_data/mysql_upgrade_info
-.gitignore
 mysql/mysql_data/undo_001
 mysql/mysql_data/undo_002
 mysql/mysql_data/binlog.000002
@@ -166,3 +165,4 @@ mysql/mysql_data/binlog.000033
 mysql/mysql_data/binlog.000034
 mysql/mysql_data/binlog.000035
 mysql/mysql_data/binlog.000036
+mysql/mysql_data/binlog.000037

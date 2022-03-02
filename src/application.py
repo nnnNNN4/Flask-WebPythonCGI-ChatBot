@@ -9,20 +9,22 @@ from flask import abort, redirect
 from markupsafe import escape
 from werkzeug.utils import secure_filename
 
+from src.database import init_db
+
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-# def create_app():
-#     app = Flask(__name__)
-#     app.config.from_object('mydb.config.Config')
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('src.config.Config')
 
-#     init_db(app)
+    init_db(app)
 
-#     return app
+    return app
 
-# app = create_app()
+app = create_app()
 
 # route setting
 from src.routes import routes_setting
