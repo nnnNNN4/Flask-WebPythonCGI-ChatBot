@@ -1,21 +1,24 @@
 version: '3.3'
 services:
   python3:
+    container_name: Flask-Project-1
     build:
       context: ./src
     ports:
       - 8000:80
     volumes:
-      - ./src:/src
+      - ./:/Flask-Project-1
+    tty: true
     environment:
-      - FLASK_APP=src.run:app
+      - FLASK_APP=src.run
       - FLASK_ENV=development
-    command: flask run -h 0.0.0.0
     links:
       - mysql
 
+#mysql
   mysql:
     image: mysql:8.0
+    container_name: mysql
     ports:
       - 3306:3306
     restart: always

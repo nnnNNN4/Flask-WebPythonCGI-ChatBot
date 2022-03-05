@@ -12,13 +12,14 @@ CMD ["mysqld"]
 ##アプリケーション
 FROM python:3.8
 
-ARG project_dir= /src
+ADD . /Flask-Project-1/src
 
-ADD ./requirements.txt $project_dir
-
-WORKDIR $project_dir
+WORKDIR /Flask-Project-1/src
 
 RUN pip install -r requirements.txt
+
+WORKDIR /Flask-Project-1
+CMD sh start.sh
 
 RUN apt-get update
 RUN apt-get -y install locales && \
