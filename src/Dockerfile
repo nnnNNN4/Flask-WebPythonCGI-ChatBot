@@ -13,15 +13,14 @@ CMD ["mysqld"]
 FROM python:3.8
 
 ADD . /Flask-Project-1/src
-
 WORKDIR /Flask-Project-1/src
-
 RUN pip install -r requirements.txt
 
 WORKDIR /Flask-Project-1
 CMD sh start.sh
 
-RUN apt-get update
+RUN apt-get update && apt upgrade -y
+RUN apt install -y nodejs npm && npm install
 RUN apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
