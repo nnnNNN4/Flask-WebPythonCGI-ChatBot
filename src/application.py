@@ -10,6 +10,7 @@ from markupsafe import escape
 from werkzeug.utils import secure_filename
 
 from src.database import init_db
+from src.celery_utils import init_celery
 
 from flask_bootstrap import Bootstrap
 

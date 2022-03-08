@@ -1,6 +1,6 @@
 ## SQLAlchemy起動チェック
-from src import app
+from src import application
 import src
 
-if __name__ == '__main__':
-    app.run()
+app = application.create_app(celery=src.celery)
+app.run()

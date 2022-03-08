@@ -1,5 +1,20 @@
 import os
 
+class Config(object):
+    DEBUG = False
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    FAQ_FILE_UPLOAD_DIR = '/Flask-Project-1/src/upload'
+
+    CELERY = {
+        'broker': 'redis://redis:6379',
+        'backend': 'redis://redis:6379',
+        'imports': ['src.admin.domain.tasks'],
+    }
+
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'mysql://user@localhost/foo'
+
 class DevelopmentConfig:
 
     # Flask
@@ -17,4 +32,14 @@ class DevelopmentConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
-Config = DevelopmentConfig
+class TestingConfig(Config):
+    TESTING = True
+
+
+def get_config(env='development'):
+    if env == 'production':
+        return ProductionConfig()
+    elif env == 'test':
+        return TestingConfig()
+    else:
+        return DevelopmentConfig()

@@ -9,10 +9,16 @@ from werkzeug.utils import secure_filename
 from markupsafe import escape
 
 def routes_setting(app: Flask):
-    @app.route('/')
-    def index():
-        return render_template('main/index.html')
+    #############################
+    # from
+    #############################
+    from src.front import index as front
+    app.register_blueprint(front.bp)
+    app.add_url_rule('/', endpoint='index')
 
+    #############################
+    # test
+    #############################
     @app.route('/login', methods=['POST', 'GET'])
     def login():
         if request.method == 'POST':

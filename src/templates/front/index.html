@@ -1,0 +1,18 @@
+{% extends 'main/header.html' %}
+
+{% block title %}chat bot{% endblock %}
+
+{% block content %}
+<h1>ログインフォーム</h1>
+<body>
+    <div id="contents">
+  
+      <div id="cb-area">
+        <cb-talk v-bind:talk="talk" v-bind:send-question="sendQuestion" v-bind:send-static-answer="sendStaticAnswer">
+        </cb-talk>
+        <cb-control v-bind:send-free-text="sendFreeText"></cb-control>
+      </div>
+  
+    </div>
+</body>
+{% endblock %}
