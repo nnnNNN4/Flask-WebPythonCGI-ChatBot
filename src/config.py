@@ -15,7 +15,7 @@ class Config(object):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql://user@localhost/foo'
 
-class DevelopmentConfig:
+class DevelopmentConfig(Config):
 
     # Flask
     DEBUG = True
