@@ -15,6 +15,7 @@ faqs_faqs_table = db.Table(
         db.ForeignKey('faqs.id'),
         primary_key=True))
 
+
 class FaqModel(db.Model):
     __tablename__ = 'faqs'
     id = db.Column(db.Integer, primary_key=True)

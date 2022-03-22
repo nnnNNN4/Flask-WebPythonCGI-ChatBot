@@ -2,8 +2,12 @@ import copy
 from flask import (
     Blueprint, request, render_template, redirect, url_for, current_app
 )
+from src.admin.domain.repositories.BotRepository import IBotRepository
+from src.admin.domain.repositories.FaqListRepository import IFaqListRepository
+from src.admin.domain.services.BotService import BotService
+from src.admin.domain.services.FaqListService import FaqListService
+from src.admin.helpers.forms.BotForm import BotForm
 bp = Blueprint('admin/bot', __name__, url_prefix='/admin/bot')
-
 @bp.route('/')
 def index(bot_repository: IBotRepository):
     bot_service = BotService(bot_repository=bot_repository)
